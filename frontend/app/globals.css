@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card-bg: #ffffff;
+  --de-accent: #0d9488;
+  --para-accent: #2563eb;
+  --ok-color: #059669;
+  --divergente-color: #d97706;
+  --falta-color: #dc2626;
+  --info-color: #64748b;
+  --border-subtle: #e2e8f0;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --radius: 0.5rem;
+  --radius-lg: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  letter-spacing: -0.011em;
+}
+
+/* Auditoria DE → PARA flow visual */
+.audit-flow-arrow {
+  position: relative;
+}
+.audit-flow-arrow::after {
+  content: "→";
+  color: var(--para-accent);
+  font-weight: 600;
+  opacity: 0.6;
+}

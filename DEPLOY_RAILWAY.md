@@ -18,6 +18,7 @@ O projeto tem **backend (FastAPI)** e **frontend (Next.js)**. No Railway, crie *
 3. Railway detecta Node.js e executa `npm run build` + `npm start`
 4. **Variables** (Settings → Variables):
    - `NEXT_PUBLIC_API_URL` = URL do backend (ex: `https://backend-production-xxxx.up.railway.app`)
+   - `NIXPACKS_NODE_VERSION` = `20` — obrigatório (Next.js 16 requer Node ≥ 20)
 5. O frontend será publicado em uma URL própria (ex: `https://frontend-production-yyyy.up.railway.app`)
 
 ## 3. CORS

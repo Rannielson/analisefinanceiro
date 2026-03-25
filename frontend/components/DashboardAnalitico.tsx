@@ -46,7 +46,22 @@ export default function DashboardAnalitico({ resumo, porData }: DashboardAnaliti
         <span className="text-slate-300">DE → PARA</span>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7">
+        {(() => {
+          const pctAcerto = resumo.total_referencia > 0
+            ? Math.round((resumo.matches_confirmados / resumo.total_referencia) * 1000) / 10
+            : 0;
+          const corTexto = pctAcerto >= 80 ? "text-emerald-600" : pctAcerto >= 50 ? "text-amber-600" : "text-red-600";
+          const corBg = pctAcerto >= 80 ? "bg-emerald-50" : pctAcerto >= 50 ? "bg-amber-50" : "bg-red-50";
+          const corBorda = pctAcerto >= 80 ? "border-emerald-200" : pctAcerto >= 50 ? "border-amber-200" : "border-red-200";
+          return (
+            <div className={`rounded-xl border ${corBorda} ${corBg} p-4 shadow-[var(--shadow-sm)]`}>
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">% de Acerto</p>
+              <p className={`mt-0.5 text-xl font-bold tabular-nums ${corTexto}`}>{pctAcerto.toFixed(1)}%</p>
+              <p className="mt-1 text-xs text-slate-500">{resumo.matches_confirmados}/{resumo.total_referencia}</p>
+            </div>
+          );
+        })()}
         <div className="rounded-xl border border-slate-200/80 bg-white p-4 shadow-[var(--shadow-sm)]">
           <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">DE</p>
           <p className="mt-0.5 text-xl font-bold tabular-nums text-teal-700">{formatarValor(totalDe)}</p>
